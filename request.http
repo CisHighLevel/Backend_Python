@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:5000/user/ HTTP/1.1
+GET http://10.192.230.83:5000/data/ HTTP/1.1
 
 ###
 DELETE http://localhost:5000/user/663571c61cc68144d5c2a417 HTTP/1.1

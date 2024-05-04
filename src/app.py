@@ -21,4 +21,4 @@ app.register_blueprint(user, url_prefix='/user')
 app.register_blueprint(data, url_prefix='/data')
 
 if __name__ == '__main__':
-  app.run(debug=True, host='192.168.72.18') # Reemplaza '192.168.1.100' con la dirección IP de tu ordenador
+  app.run(debug=True, host='10.192.230.83') # Reemplaza '192.168.1.100' con la dirección IP de tu ordenador
