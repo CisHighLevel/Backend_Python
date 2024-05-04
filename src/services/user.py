@@ -1,5 +1,6 @@
 from flask import request, Response
 from bson import json_util, ObjectId
+import bcrypt
 
 from config.mongodb import mongo
 
@@ -14,9 +15,7 @@ def create_user_service():
         password = data.get('password', None)
         
         if user_name:
-            print(user_name, mail, password)
-            new_user = User(user_name=user_name, mail=mail, password=password)
-            print(new_user)
+            new_user = User(user_name=user_name, mail=mail, password=encryptPswd(password))
             mongo.db.users.insert_one(new_user.to_dict())  # Guardar el nuevo usuario en MongoDB
             return 'User created successfully', 201
         else:
@@ -52,3 +51,8 @@ def delete_user_service(id):
         return 'user deleted successfully', 200
     else:
         return 'user not found', 404
+
+def encryptPswd(password):
+        salt = bcrypt.gensalt()
+        hashed_password = bcrypt.hashpw(password.encode("utf8"), salt)
+        return hashed_password

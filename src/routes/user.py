@@ -1,6 +1,7 @@
 from flask import Blueprint
 
 from services.user import create_user_service, get_users_service, get_user_service, update_user_service, delete_user_service
+from services.auth import login
 
 user = Blueprint('user', __name__)
 
@@ -23,3 +24,7 @@ def update_user(id):
 @user.route('/<id>', methods=['DELETE'])
 def delete_user(id):
   return delete_user_service(id)
+
+@user.route('/login', methods=['POST'])
+def login_user():
+  return login()

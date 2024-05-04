@@ -10,3 +10,4 @@ class User:
             "mail": self.mail,
             "password": self.password
         }
+    
