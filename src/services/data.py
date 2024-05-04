@@ -1,6 +1,6 @@
 from flask import request, Response
 from bson import json_util, ObjectId
-import bcrypt
+import datetime
 
 from config.mongodb import mongo
 
@@ -10,11 +10,11 @@ def create_data_service():
     try:
         data = request.get_json()
         print(data)
-        string = data.get('string', None)
+        time = datetime.datetime.now()
         value = data.get('value', None)
         
         if value:
-            new_data = Data(string=string, value=value,)
+            new_data = Data(time=time, value=value,)
             mongo.db.datas.insert_one(new_data.to_dict())  # Guardar el nuevo usuario en MongoDB
             return 'Data created successfully', 201
         else:

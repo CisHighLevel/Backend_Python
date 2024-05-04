@@ -1,10 +1,10 @@
 class Data:
-    def __init__(self, string, value):
-        self.string = string
+    def __init__(self, time, value):
+        self.time = time
         self.value = value
 
     def to_dict(self):
         return {
-            "string": self.string,
+            "time": self.time,
             "value": self.value,
         }

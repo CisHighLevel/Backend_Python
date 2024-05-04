@@ -24,6 +24,7 @@ def create_user_service():
         print(e)
 
 def get_users_service():
+    print("grafana")
     users = mongo.db.users.find()
     result = json_util.dumps(users)
     return Response(result, mimetype='application/json')
