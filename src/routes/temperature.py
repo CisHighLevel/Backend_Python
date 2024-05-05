@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from services.temperature import create_temperature_service, get_temperatures_service, get_temperature_service, update_temperature_service, delete_temperature_service
+from services.temperature import create_temperature_service, get_temperatures_service, get_temperature_service, update_temperature_service, delete_temperature_service, get_latest_temperature_service
 
 temperature = Blueprint('temperature', __name__)
 
@@ -23,3 +23,7 @@ def update_temperature(id):
 @temperature.route('/<id>', methods=['DELETE'])
 def delete_temperature(id):
   return delete_temperature_service(id)
+
+@temperature.route('/latest', methods=['GET'])
+def get_latest_temperature():
+    return get_latest_temperature_service()

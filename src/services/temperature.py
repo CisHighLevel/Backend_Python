@@ -44,3 +44,16 @@ def delete_temperature_service(id):
         return 'temperature deleted successfully', 200
     else:
         return 'litemperatureght not found', 404
+    
+def get_latest_temperature_service():
+    data = mongo.db.temperatures.find().sort([('_id', -1)]).limit(1)
+    latest_data = next(data, None)  # Extraer el primer documento del cursor
+    if latest_data:
+        # Obtener el valor 'value' del documento
+        latest_value = latest_data.get('value')
+        # Convertir el valor a JSON
+        result = json_util.dumps({'value': latest_value})
+        return Response(result, mimetype='application/json')
+    else:
+        # Si no hay datos, devolver un objeto JSON vacío
+        return Response({}, mimetype='application/json')    

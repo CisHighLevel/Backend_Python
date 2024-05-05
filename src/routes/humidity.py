@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from services.humidity import create_humidity_service, get_humidities_service, get_humidity_service, update_humidity_service, delete_humidity_service
+from services.humidity import create_humidity_service, get_humidities_service, get_humidity_service, update_humidity_service, delete_humidity_service, get_latest_humidity_service
 
 humidity = Blueprint('humidity', __name__)
 
@@ -23,3 +23,7 @@ def update_humidity(id):
 @humidity.route('/<id>', methods=['DELETE'])
 def delete_humidity(id):
   return delete_humidity_service(id)
+
+@humidity.route('/latest', methods=['GET'])
+def get_latest_humidity():
+    return get_latest_humidity_service()
