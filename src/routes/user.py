@@ -9,9 +9,9 @@ user = Blueprint('user', __name__)
 def get_users():
   return get_users_service()
 
-@user.route('/<id>', methods=['GET'])
-def get_user(id):
-  return get_user_service(id)
+@user.route('/<mail>', methods=['GET'])
+def get_user(mail):
+  return get_user_service(mail)
 
 @user.route('/create', methods=['POST'])
 def create_user():

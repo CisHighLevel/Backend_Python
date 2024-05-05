@@ -29,8 +29,8 @@ def get_users_service():
     result = json_util.dumps(users)
     return Response(result, mimetype='application/json')
 
-def get_user_service(id):
-    data = mongo.db.users.find_one({'_id': ObjectId(id)})
+def get_user_service(mail):
+    data = mongo.db.users.find_one({'mail': mail})
     result = json_util.dumps(data)
     return Response(result, mimetype='application/json')
 
