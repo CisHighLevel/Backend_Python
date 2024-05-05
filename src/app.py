@@ -5,7 +5,9 @@ import os
 
 from config.mongodb import mongo
 from routes.user import user
-from routes.data import data
+from routes.humidity import humidity
+from routes.light import light
+from routes.temperature import temperature
 
 config = load_dotenv()
 
@@ -22,7 +24,10 @@ def index():
     return render_template('login.html')
 
 app.register_blueprint(user, url_prefix='/user')
-app.register_blueprint(data, url_prefix='/data')
+app.register_blueprint(humidity, url_prefix='/humidity')
+app.register_blueprint(light, url_prefix='/light')
+app.register_blueprint(temperature, url_prefix='/temperature')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+  app.run(debug=True, host='10.192.230.83') # Reemplaza '192.168.1.100' con la dirección IP de tu ordenador
+
