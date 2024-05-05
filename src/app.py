@@ -29,5 +29,5 @@ app.register_blueprint(light, url_prefix='/light')
 app.register_blueprint(temperature, url_prefix='/temperature')
 
 if __name__ == '__main__':
-  app.run(debug=True, host='10.192.230.83') # Reemplaza '192.168.1.100' con la dirección IP de tu ordenador
+    app.run(debug=True, host='10.192.230.83') # Reemplaza '192.168.1.100' con la dirección IP de tu ordenador
 

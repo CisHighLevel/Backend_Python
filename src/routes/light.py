@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from services.light import create_light_service, get_lights_service, get_light_service, update_light_service, delete_light_service
+from services.light import create_light_service, get_lights_service, get_light_service, update_light_service, delete_light_service, get_latest_light_service
 
 light = Blueprint('light', __name__)
 
@@ -23,3 +23,7 @@ def update_light(id):
 @light.route('/<id>', methods=['DELETE'])
 def delete_light(id):
   return delete_light_service(id)
+
+@light.route('/latest', methods=['GET'])
+def get_latest_light():
+    return get_latest_light_service()
